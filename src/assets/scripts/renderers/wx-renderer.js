@@ -66,6 +66,15 @@ var WxRenderer = function (opts) {
     return '<h3 ' + S('h3') + '>References</h3><p ' + S('footnotes') + '>'  + footnoteArray.join('\n') + '</p>'
   }
 
+  this.greatChefFooter = function () {
+    endText = '-end-'
+    statementText = '部分图文来源于网络，仅作信息分享与传播，未涉及商业用途。'
+    authorImg = 'http://img.greatchef.com.cn/ueditor/php/upload/image/20200312/1584006875640428.jpg'
+    return '<p ' + S('gc_end_tag') + '>' + endText + '</p>'
+      + '<img ' + S(ENV_STETCH_IMAGE ? 'image' : 'image_org') + ' src="' + authorImg + '"/>'
+      + '<p ' + S('gc_end_statement') + '>' + statementText + '</p>'
+  }
+
   this.setOptions = function (newOpts) {
     this.opts = COPY(this.opts, newOpts)
   }
@@ -83,7 +92,9 @@ var WxRenderer = function (opts) {
     FuriganaMD.register(renderer);
   
     renderer.heading = function (text, level) {
-      if (level < 3) {
+      if (level == 1) {
+        return '<h1 ' + S('h1') + '>' + text + '</h1><p ' + S('h1_divider') + '><br></p>'
+      } else if (level < 3) {
         return '<h2 ' + S('h2') + '>' + text + '</h2>'
       } else {
         return '<h3 ' + S('h3') + '>' + text + '</h3>'
@@ -93,6 +104,7 @@ var WxRenderer = function (opts) {
       return '<p ' + S('p') + '>' + text + '</p>'
     }
     renderer.blockquote = function (text) {
+      text = text.replace(/<p style="([^<>]*)">/gim, '<p ' + S('blockquote_p') + '>')
       return '<blockquote ' + S('blockquote') + '>' + text + '</blockquote>'
     }
     renderer.code = function (text, infostring) {
@@ -123,7 +135,7 @@ var WxRenderer = function (opts) {
     renderer.list = function (text, ordered, start) {
       var segments = text.split('<%s/>');
       if (!ordered) {
-        text = segments.join('•');
+        text = segments.join('<img ' + S('listitem_dot') + ' src="http://tools.heixue.top/wechat_format/assets/images/li_dot.png">');
         return '<p ' + S('ul') + '>' + text + '</p>';
       }
       text = segments[0];
@@ -133,7 +145,11 @@ var WxRenderer = function (opts) {
       return '<p ' + S('ol') + '>' + text + '</p>';
     }
     renderer.image = function (href, title, text) {
-      return '<img ' + S(ENV_STETCH_IMAGE ? 'image' : 'image_org') + ' src="' + href + '" title="'+title+'" alt="'+text+'"/>'
+      if (text) {
+        return '<figure><img ' + S(ENV_STETCH_IMAGE ? 'image' : 'image_org') + ' src="' + href + '" title="'+title+'" alt="'+text+'"/><figcaption ' + S('figcaption') + '>' + text + '</figcaption></figure>'
+      } else {
+        return '<img ' + S(ENV_STETCH_IMAGE ? 'image' : 'image_org') + ' src="' + href + '" title="'+title+'" alt="'+text+'"/>'
+      }
     }
     renderer.link = function (href, title, text) {
       if (href.indexOf('https://mp.weixin.qq.com') === 0) {

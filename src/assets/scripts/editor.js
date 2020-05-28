@@ -14,6 +14,7 @@ var app = new Vue({
       currentEditorTheme: 'base16-light',
       editor: null,
       builtinFonts: [
+        { label: '名厨', value: "微软雅黑, Helvetica, STHeiti, Droidsansfallback"},
         { label: '衬线', value: "Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"},
         { label: '无衬线', value: "Roboto, Oxygen, Ubuntu, Cantarell, PingFangSC-light, PingFangTC-light, 'Open Sans', 'Helvetica Neue', sans-serif"}
       ],
@@ -67,6 +68,7 @@ var app = new Vue({
       if (this.wxRenderer.hasFootnotes()) {
         output += this.wxRenderer.buildFootnotes()
       }
+      output += this.wxRenderer.greatChefFooter()
       return output
     },
     editorThemeChanged: function (editorTheme) {

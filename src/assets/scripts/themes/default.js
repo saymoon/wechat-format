@@ -1,7 +1,7 @@
 var defaultTheme = {
   BASE: {
     'text-align': 'left',
-    'color': '#3f3f3f',
+    'color': 'rgb(117, 117, 117)',
     'line-height': '1.5'
   },
   BASE_BLOCK: {
@@ -9,27 +9,62 @@ var defaultTheme = {
   },
   // block element
   block: {
+    h1: {
+      'color': '#000',
+      'font-size': '17px',
+      'line-height': '32px',
+      'margin-bottom': '14px',
+      'padding-top': '14px',
+      'padding-right': '35px',
+      'padding-left': '35px',
+      'text-align': 'center'
+    },
+    h1_divider: {
+      'display': 'block',
+      'font-size': '0px',
+      'margin-right': 'auto',
+      'margin-bottom': '28px',
+      'margin-left': 'auto',
+      'height': '1px',
+      'background-color': 'rgb(216, 216, 216)',
+      'width': '50px'
+    },
     h2: {
-      'font-size': '140%',
-      'text-align': 'center',
-      'font-weight': 'normal',
-      'text-align': 'center',
-      'margin': '80px 10px 40px 10px'
+      'margin-right': '11px',
+      'margin-left': '11px',
+      'padding-top': '14px',
+      'font-size': '21px',
+      'font-weight': 'bold',
+      'line-height': '32px',
+      'color': 'rgb(173, 135, 72)',
+      'text-align': 'start'
     },
     h3: {
+      'margin-right': '11px',
+      'margin-left': '11px',
+      'padding-top': '14px',
+      'font-size': '18px',
       'font-weight': 'bold',
-      'font-size': '120%',
-      'margin': '40px 10px 20px 10px'
+      'line-height': '25px',
+      'color': 'rgb(0, 0, 0)',
+      'text-align': 'start'
     },
     p: {
-      'margin': '10px 10px',
-      'line-height': '1.6'
+      'font-size': '16px',
+      'margin': '14px 11px',
+      'line-height': '29px'
     },
     blockquote: {
-      'color': 'rgb(91, 91, 91)',
-      'padding': '1px 0 1px 10px',
-      'background': 'rgba(158, 158, 158, 0.1)',
-      'border-left': '3px solid rgb(158,158,158)',
+      'margin-right': '44px',
+      'margin-left': '44px',
+      'color': 'rgb(68, 68, 68)',
+      'padding': '1px 0 1px 12px',
+      'border-left': '4px solid rgba(216, 216, 216, 0.43)',
+    },
+    blockquote_p: {
+      'color': 'rgb(117, 117, 117)',
+      'font-size': '13px',
+      'line-height': '24px'
     },
     code: {
       'font-size': '80%',
@@ -43,28 +78,47 @@ var defaultTheme = {
       'margin': '20px 0',
     },
     image: {
-      'border-radius': '4px',
       'display': 'block',
-      'margin': '20px auto',
+      'margin': '0 auto',
       'width': '100%',
     },
     image_org: {
       'border-radius': '4px',
       'display': 'block',
     },
+    figcaption: {
+      'text-align': 'center',
+      'font-size': '13px',
+      'color': 'rgb(155, 155, 155)',
+      'margin': '5px',
+    },
     ol: {
       'margin-left': '0',
       'padding-left': '20px'
     },
     ul: {
-      'margin-left': '0',
       'padding-left': '20px',
-      'list-style': 'circle',
+      'list-style': 'none',
     },
     footnotes: {
       'margin': '10px 10px',
       'font-size': '14px'
-    }  
+    },
+    gc_end_tag: {
+      'margin-bottom': '28px',
+      'font-size': '12px',
+      'line-height': '20px',
+      'text-align': 'center',
+      'color': 'rgb(0, 0, 0)'
+    },
+    gc_end_statement: {
+      'margin-right': '11px',
+      'margin-bottom': '14px',
+      'margin-left': '11px',
+      'font-size': '14px',
+      'line-height': '26px',
+      'color': 'rgb(159, 159, 159)'
+    }
   },
   inline: {
     // inline element
@@ -72,6 +126,18 @@ var defaultTheme = {
       'text-indent': '-20px',
       'display': 'block',
       'margin': '10px 10px',
+      'color': 'rgb(74, 74, 74)',
+      'font-size': '16px',
+      'line-height': '29px'
+    },
+    listitem_dot: {
+      'vertical-align': 'top',
+      'float': 'left',
+      'margin-left': '-34px',
+      'margin-top': '5px',
+      'background-size': '20px',
+      'width': '20px !important',
+      'height': 'auto !important'
     },
     codespan: {
       'font-size': '90%',
